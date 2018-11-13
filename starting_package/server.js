@@ -3,6 +3,7 @@ const hbs = require('hbs');
 const fs = require('fs');
 var app = express();
 
+const port = process.env.PORT || 8080;
 
 hbs.registerPartials(__dirname + '/views/partials');
 
@@ -29,19 +30,19 @@ app.use((request, response, next) => {
 
 	});
 
+	// response.render('maintenance.hbs', {
+	// 	title: 'maintenance Page',
+	// 	welcome: 'The site is currently down for maintenance'
+	// });
+	next();
+});
+
+app.get('/maintenance', (request, response) => {
 	response.render('maintenance.hbs', {
 		title: 'maintenance Page',
 		welcome: 'The site is currently down for maintenance'
 	});
-
 });
-
-// app.get('/maintenance', (request, response) => {
-// 	response.render('maintenance.hbs', {
-// 		title: 'maintenance Page',
-// 		welcome: 'The site is currently down for maintenance'
-// 	});
-// });
 
 app.get('/', (request, response) => {
 	// response.send('<h1>Hello Express!</h1>');
@@ -97,6 +98,6 @@ app.get('/404', (request, response) => {
 	})
 })
 
-app.listen(8080, () => {
-	console.log('Server is up on the port 8080');
+app.listen(port, () => {
+	console.log('Server is up on the port ${port}');
 });
