@@ -44,20 +44,20 @@ app.get('/maintenance', (request, response) => {
 	});
 });
 
+// app.get('/', (request, response) => {
+// 	// response.send('<h1>Hello Express!</h1>');
+// 	response.send({
+// 		name: 'Your Name',
+// 		school: [
+// 			'BCIT',
+// 			'SFU',
+// 			'UBC'
+// 		]
+// 	})
+// });
+
+
 app.get('/', (request, response) => {
-	// response.send('<h1>Hello Express!</h1>');
-	response.send({
-		name: 'Your Name',
-		school: [
-			'BCIT',
-			'SFU',
-			'UBC'
-		]
-	})
-});
-
-
-app.get('/info', (request, response) => {
 	response.render('about.hbs', {
 		title: 'About Page',
 		year: new Date().getFullYear(),
@@ -65,32 +65,32 @@ app.get('/info', (request, response) => {
 	});
 });
 
-// app.get('/about', (request, response) => {
-// 	response.render('about.hbs', {
-// 		title: 'About Page',
-// 		year: new Date().getFullYear(),
-// 		welcome: 'welcome to the about page!',
-// 	});
-// });
+app.get('/about', (request, response) => {
+	response.render('about.hbs', {
+		title: 'About Page',
+		year: new Date().getFullYear(),
+		welcome: 'welcome to the about page!',
+	});
+});
 
-// app.get('/image', (request, response) => {
-// 	response.render('image.hbs', {
-// 		welcome: 'welcome to the image page!',
-// 		year: new Date().getFullYear(),
-// 		image: '/fish.jpeg'
-// 	});
-// });
+app.get('/image', (request, response) => {
+	response.render('image.hbs', {
+		welcome: 'welcome to the image page!',
+		year: new Date().getFullYear(),
+		image: '/fish.jpeg'
+	});
+});
 
-// app.get('/menu', (request, response) => {
-// 	response.render('menu.hbs', {
-// 		welcome: 'welcome!',
+app.get('/menu', (request, response) => {
+	response.render('menu.hbs', {
+		welcome: 'welcome!',
 
-// 		link: {
-// 			about: '/about',
-// 			image: '/image'
-// 		}
-// 	});
-// });
+		link: {
+			about: '/about',
+			image: '/image'
+		}
+	});
+});
 
 app.get('/404', (request, response) => {
 	response.send({
